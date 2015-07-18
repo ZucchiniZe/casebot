@@ -1,0 +1,14 @@
+2015-07-18T22:41:27.927Z - info: Logged onto Steam
+2015-07-18T22:41:28.989Z - info: Logged into web
+2015-07-18T22:50:38.813Z - info: [76561198042194411] Accepted friend request
+2015-07-18T22:50:42.772Z - info: --> [76561198042194411] MSG: Hello Nxbt, it looks like you have 8 cases. Would you be willing to donate any to keep me alive?
+2015-07-18T22:50:56.418Z - info: <-- [76561198042194411] MSG: no
+2015-07-18T22:50:56.418Z - info: --> [76561198042194411] MSG: Sorry, please enter a command. !help for list of commands
+2015-07-18T22:51:01.744Z - info: <-- [76561198042194411] MSG: !help
+2015-07-18T22:51:01.745Z - info: --> [76561198042194411] MSG: I am a case dispenser, you can get 10 cases free. After that you have to pay with cheap skins
+Commands:
+	!request <amount> <case>: sends a trade offer for that number of cases. e.g. !request 10 falchion	!inventory: returns how many cases I have
+2015-07-18T22:54:10.503Z - info: <-- [76561198042194411] MSG: !request 10 falchion
+2015-07-18T22:54:10.504Z - info: --> [76561198042194411] MSG: You have requested 10 falchion cases. Please check your trade offers
+2015-07-18T22:54:31.188Z - info: <-- [76561198042194411] MSG: !request 10 asdfjeqr
+2015-07-18T22:54:31.189Z - info: --> [76561198042194411] MSG: You have requested 10 asdfjeqr cases. Please check your trade offers

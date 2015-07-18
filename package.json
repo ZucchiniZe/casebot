@@ -1,0 +1,19 @@
+{
+  "name": "casebot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^3.10.0",
+    "steam": "^0.6.8",
+    "steam-trade": "git://github.com/seishun/node-steam-trade.git",
+    "steam-tradeoffers": "^2.0.0",
+    "steam-userinfo": "^1.1.5",
+    "winston": "^1.0.1"
+  }
+}
