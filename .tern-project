@@ -1,0 +1,17 @@
+{
+  "libs": [
+    "ecma5"
+  ],
+  "loadEagerly": [
+    "js/**/*.js"
+  ],
+  "plugins": {
+    "complete_strings": {},
+    "lint": {},
+    "node": {},
+    "requirejs": {},
+    "doc_comment": {
+     "fullDocs": true
+    }
+  }
+}

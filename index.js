@@ -7,10 +7,14 @@ var readline = require('readline');
 var fs = require('fs');
 var winston = require('winston');
 var Steam = require('steam');
+Steam.Trade = require('steam-trade');
 Steam.Offers = require('steam-tradeoffers');
 Steam.UserInfo = require('steam-userinfo');
 
 Steam.UserInfo.setup(apikey);
+
+var inTrade = false;
+var myInv;
 
 var rl = readline.createInterface({
   input: process.stdin,
@@ -30,10 +34,11 @@ var logger = new (winston.Logger)({
       json: false
     })
   ]
-})
+});
 
 var client = new Steam.SteamClient();
 var offers = new Steam.Offers();
+var trade = new Steam.Trade();
 
 function sendMessage(steamID, message) {
   logger.info('--> [' + steamID + '] MSG: ' + message);
@@ -82,9 +87,8 @@ client.on('loggedOn', function() {
 
 client.on('webSessionID', function(sessionid) {
   client.webLogOn(function(cookie) {
-    offers.setup({
-      sessionID: sessionid,
-      webCookie: cookie
+    cookie.forEach(function(part) {
+      trade.setCookie(part.trim());
     });
     logger.info('Logged into web');
     client.setPersonaState(Steam.EPersonaState.LookingToTrade);
@@ -101,38 +105,62 @@ client.on('friend', function(steamID, relationship) {
         var cases = 0;
         items.forEach(function(item) {
           if(item.name.indexOf("Case") > -1) {
-            cases++
+            cases++;
           }
         });
         sendMessage(steamID, 'Hello '+data.response.players[0].personaname +
         ', it looks like you have ' + cases + (cases === 1 ? ' case' : ' cases') +
-        '. Would you be willing to donate any to keep me alive?')
+        '. Would you be willing to donate any to keep me alive?');
       });
-    })
+    });
   } else if (relationship == Steam.EFriendRelationship.None) {
     logger.info('[' + steamID + '] Un-friended');
   }
 });
 
+var casenames = {
+  chroma: /chroma|chroma case|chr|c/i,
+  chroma2: /chroma 2|chroma 2 case|chroma2|chr2|c2/i,
+  falchion: /falchion|falchion case|fal|f/i,
+  breakout: /breakout|breakout case|bre|bt/i,
+  phoenix: /phoenix|phoenix case|pho|p/i,
+  vanguard: /vanguard|vanguard case|van|v/i,
+  winter: /winter|winter case|win|w/i,
+  esport2013: /esport 2013|esport 2013 case|e13/i,
+  esport2013w: /esport 2013 winter|esport 2013 winter case|esport winter|ew/i,
+  esport2014: /esport 2014|esport 2014 case|e14/i,
+  bravo: /operation bravo|bravo|bo/i
+};
+
 client.on('friendMsg', function(steamID, message, type) {
   if (type === Steam.EChatEntryType.ChatMsg) {
     logger.info('<-- [' + steamID + '] MSG: ' + message);
 
-    var request = message.match(/(\w+) (\d+) (\w+)/i)
-    var msg = message.match(/(\w+)/)
+    var msg = message.match(/(\w+)/);
     if(msg && msg[1] === 'help') {
       sendMessage(steamID, 'I am a case dispenser, you can get 10 cases free. After that you have to pay with cheap skins\n' +
+      'Please use the name of the case provided here when requesting:\n' +
+      'chroma, chroma2, falchion, breakout, phoenix, vanguard'
       'Commands:\n' +
-      '\t!request <amount> <case>: sends a trade offer for that number of cases. e.g. !request 10 falchion\n' +
-      '\t!inventory: returns how many cases I have')
+      '\tr OR request <amount> <case>: sends a trade offer for that number of cases. e.g. request 10 falchion\n' +
+      '\ti OR inventory: returns how many cases I have');
     } else if (msg && (msg[1] === 'inventory' || msg[1] === 'i')) {
-      
-    } else if (request && (request[1] === 'request' || request[1] === 'r')) {
-      sendMessage(steamID, 'You have requested '+request[2]+' '+request[3]+' cases. Please check your trade offers')
+
     } else if (msg) {
-      sendMessage(steamID, 'Sorry, that command is not recognized.')
+      sendMessage(steamID, 'Sorry, that command is not recognized.');
     } else {
-      sendMessage(steamID, 'Sorry, please enter a command. !help for list of commands')
+      sendMessage(steamID, 'Sorry, please enter a command. !help for list of commands');
     }
   }
 });
+
+client.on('tradeProposed', function(tradeID, steamID) {
+  if (inTrade) {
+    client.respondToTrade(tradeID, false);
+    sendMessage(steamID, 'Sorry, I am currently in a exchange with someone else.');
+  } else {
+    client.respondToTrade(tradeID, true);
+    logger.info('[' + steamID + '] Accepted trade request');
+  }
+});
+

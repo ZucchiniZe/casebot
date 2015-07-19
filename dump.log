@@ -12,3 +12,33 @@ Commands:
 2015-07-18T22:54:10.504Z - info: --> [76561198042194411] MSG: You have requested 10 falchion cases. Please check your trade offers
 2015-07-18T22:54:31.188Z - info: <-- [76561198042194411] MSG: !request 10 asdfjeqr
 2015-07-18T22:54:31.189Z - info: --> [76561198042194411] MSG: You have requested 10 asdfjeqr cases. Please check your trade offers
+2015-07-18T23:29:38.878Z - info: Logged onto Steam
+2015-07-18T23:29:41.879Z - info: Logged into web
+2015-07-18T23:35:26.759Z - info: Logged onto Steam
+2015-07-18T23:35:29.808Z - info: Logged into web
+2015-07-18T23:36:23.198Z - info: [76561198083592618] Un-friended
+2015-07-18T23:36:35.852Z - info: [76561198083592618] Accepted friend request
+2015-07-18T23:36:39.983Z - info: --> [76561198083592618] MSG: Hello Irish Fury, it looks like you have 1 case. Would you be willing to donate any to keep me alive?
+2015-07-18T23:36:51.987Z - info: <-- [76561198083592618] MSG: fuk u
+2015-07-18T23:36:51.990Z - info: --> [76561198083592618] MSG: Sorry, that command is not recognized.
+2015-07-18T23:37:16.140Z - info: <-- [76561198083592618] MSG: help
+2015-07-18T23:37:16.140Z - info: --> [76561198083592618] MSG: I am a case dispenser, you can get 10 cases free. After that you have to pay with cheap skins
+Commands:
+	r OR request <amount> <case>: sends a trade offer for that number of cases. e.g. request 10 falchion
+	i OR inventory: returns how many cases I have
+2015-07-18T23:37:23.527Z - info: <-- [76561198083592618] MSG: r 5 c
+2015-07-18T23:37:23.528Z - info: --> [76561198083592618] MSG: You have requested 5 c cases. Please check your trade offers
+2015-07-18T23:50:00.940Z - info: Logged onto Steam
+2015-07-18T23:50:04.224Z - info: Logged into web
+2015-07-18T23:50:15.674Z - info: <-- [76561198083592618] MSG: r 5 van
+2015-07-18T23:52:31.729Z - info: Logged onto Steam
+2015-07-18T23:52:34.669Z - info: Logged into web
+2015-07-18T23:52:44.596Z - info: <-- [76561198083592618] MSG: request 5 vnaguard
+2015-07-18T23:53:28.741Z - info: Logged onto Steam
+2015-07-18T23:53:34.643Z - info: Logged into web
+2015-07-18T23:53:42.485Z - info: <-- [76561198083592618] MSG: request 5 vanguard
+2015-07-18T23:53:42.489Z - info: --> [76561198083592618] MSG: You have requested 5 vanguard cases. Please check your trade offers
+2015-07-18T23:54:34.427Z - info: Logged onto Steam
+2015-07-18T23:54:37.437Z - info: Logged into web
+2015-07-18T23:54:46.782Z - info: <-- [76561198083592618] MSG: request 5 vanguard
+2015-07-18T23:54:46.785Z - info: --> [76561198083592618] MSG: You have requested 5 vanguard cases. Please check your trade offers
